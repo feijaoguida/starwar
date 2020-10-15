@@ -53,7 +53,10 @@ export default function App() {
       </s.DivTopo>
       
       <s.List>
-        {people.map(person => (
+        {people.sort(function(a,b) {
+          return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+      })
+        .map(person => (
           <li key={person.name}>
             <Personagens name={person.name} color={person.eye_color} />
             <s.ButtonTrash
@@ -63,7 +66,7 @@ export default function App() {
                   <FiTrash2 size={20} color="#a8a8b3" />
                 </s.ButtonTrash>
           </li>
-        )).sort()}
+        ))}
       </s.List>
     </s.Container>
   );
